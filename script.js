@@ -19,20 +19,26 @@ logPost(5)
 
 //Problem 2
 
-// const logUsers = () => {
-//     const getUsers = fetch(`https://jsonplaceholder.typicode.com/users/`)
+const logUsers = () => {
+    const getUsers = fetch(`https://jsonplaceholder.typicode.com/users/`)
 
-//     getUsers
-//             .then(response => {
-//                 return response.json();
-//             })
-//             .then(data.map(user => {
-//                 console.log(user.user)
-//             }))
-// }
+    getUsers
+            .then(response => {
+                return response.json();
+            })
+                .then(data => {
+                    let userName = data.map(function(user){
+                        return user.name
+                    })
+                    console.log(userName)
+                })
+}
 
-// logUsers()
+logUsers()
 
+//async & await
+
+/*
 const logUsers = async function () {
 	const usersReq = await fetch("https://jsonplaceholder.typicode.com/users/")
 	const json = await usersReq.json()
@@ -44,7 +50,9 @@ const logUsers = async function () {
 }
 
 logUsers()
+*/
 
+// Problem 3
 
 
 
