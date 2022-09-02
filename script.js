@@ -15,7 +15,7 @@ const logPost = function (postId) {
         })
 }
 
-logPost(5)
+// logPost(5)
 
 //Problem 2
 
@@ -34,7 +34,7 @@ const logUsers = () => {
         })
 }
 
-logUsers()
+// logUsers()
 
 //async & await
 
@@ -88,7 +88,7 @@ const getBizUsers = async function () {
     console.log("Get Biz Users: ", findBiz)
 }
 
-getBizUsers()
+// getBizUsers()
 
 // Problem 4
 
@@ -124,7 +124,7 @@ const longestPost = async function () {
     console.log("longest Post: ", sortPosts[0])
 }
 
-longestPost()
+// longestPost()
 
 // Problem 5
 // This database has 200 `todos`. Write a function called `getCompletedTasks` that logs an array of all of the completed tasks.
@@ -146,4 +146,27 @@ const getCompletedTasks = () => {
         })
 }
 
-getCompletedTasks()
+// getCompletedTasks()
+
+//Problem 6
+// Write a function, `displayPhotos`, that displays a grid of 9 photos in the browser.
+
+const displayPhotos = () => {
+    const getPhotos = fetch(`https://jsonplaceholder.typicode.com/photos`);
+
+    getPhotos
+        .then(response => {
+            return response.json()
+        })
+        .then(data => {
+            let photos = data.slice(0, 9)
+            console.log(photos)
+            document.body.innerHTML = photos.map(function (photo) {
+                return `<img src="${photo.url}" alt="${photo.title}">`
+            }).join("")
+        })
+}
+
+// displayPhotos()
+
+//Problem 7
