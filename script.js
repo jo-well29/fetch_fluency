@@ -129,6 +129,7 @@ const longestPost = async function () {
 // Problem 5
 // This database has 200 `todos`. Write a function called `getCompletedTasks` that logs an array of all of the completed tasks.
 
+/*
 const getCompletedTasks = () => {
     const getTasks = fetch(`https://jsonplaceholder.typicode.com/todos`);
 
@@ -147,10 +148,26 @@ const getCompletedTasks = () => {
 }
 
 // getCompletedTasks()
+*/
+
+const getCompletedTasks = async function () {
+    const getTasks = await fetch(`https://jsonplaceholder.typicode.com/todos`);
+
+    const json = await getTasks.json();
+    const completeTask = json.filter(function (task) {
+        if (task.completed === true) {
+            return task
+        }
+    })
+    console.log(completeTask)
+}
+
+getCompletedTasks()
 
 //Problem 6
 // Write a function, `displayPhotos`, that displays a grid of 9 photos in the browser.
 
+/*
 const displayPhotos = () => {
     const getPhotos = fetch(`https://jsonplaceholder.typicode.com/photos`);
 
@@ -168,5 +185,22 @@ const displayPhotos = () => {
 }
 
 // displayPhotos()
+*/
+
+//async & await
+
+const displayPhotos = async function () {
+    const getPhotos = await fetch(`https://jsonplaceholder.typicode.com/photos`);
+
+    const json = await getPhotos.json();
+    let photos = json.slice(0,9)
+    document.body.innerHTML = photos.map(function (photo) {
+        return `<img src="${photo.url}" alt="${photo.title}">`
+    }).join("")
+}
+
+displayPhotos()
 
 //Problem 7
+// Write a function, `findClosest`, that logs the user that is geographically closest to where you are currently sitting.
+
