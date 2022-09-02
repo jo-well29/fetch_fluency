@@ -127,4 +127,23 @@ const longestPost = async function () {
 longestPost()
 
 // Problem 5
+// This database has 200 `todos`. Write a function called `getCompletedTasks` that logs an array of all of the completed tasks.
 
+const getCompletedTasks = () => {
+    const getTasks = fetch(`https://jsonplaceholder.typicode.com/todos`);
+
+    getTasks 
+        .then(response => {
+            return response.json()
+        })
+        .then(data => {
+            const completeTask = data.filter(function (task) {
+                if (task.completed === true) {
+                    return task
+                }
+            })
+            console.log(completeTask)
+        })
+}
+
+getCompletedTasks()
