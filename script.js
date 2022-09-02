@@ -30,7 +30,7 @@ const logUsers = () => {
             let userName = data.map(function (user) {
                 return user.name
             }).join(", ")
-            console.log(userName)
+            console.log("Get Users: ", userName)
         })
 }
 
@@ -77,7 +77,7 @@ getBizUsers()
 
 //async & await
 
-const getBizUsers = async function() {
+const getBizUsers = async function () {
     const getBiz = await fetch(`https://jsonplaceholder.typicode.com/users`);
     const json = await getBiz.json();
     const findBiz = json.filter(function (user) {
@@ -85,10 +85,46 @@ const getBizUsers = async function() {
             return user
         }
     })
-    console.log(findBiz)
+    console.log("Get Biz Users: ", findBiz)
 }
 
 getBizUsers()
 
 // Problem 4
+
+/*
+const longestPost = () => {
+    const getPost = fetch(`https://jsonplaceholder.typicode.com/posts`);
+
+    getPost
+        .then(response => {
+            return response.json()
+        })
+        .then(data => {
+            sortPost = data.sort(
+                function (a, b) {
+                    return b.body.length - a.body.length
+                })
+                console.log("longest Post: ", sortPost[0])
+        });
+}
+
+longestPost()
+*/
+
+
+//Async & Await
+const longestPost = async function () {
+    const getPost = await fetch(`https://jsonplaceholder.typicode.com/posts`);
+
+    const json = await getPost.json();
+    const sortPosts = json.sort(function (a, b) {
+        return b.body.length - a.body.length
+    })
+    console.log("longest Post: ", sortPosts[0])
+}
+
+longestPost()
+
+// Problem 5
 
